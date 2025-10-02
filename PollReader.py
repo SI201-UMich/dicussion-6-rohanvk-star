@@ -107,8 +107,14 @@ class PollReader():
                 harris_lv.append(self.data_dict['Harris result'][i])
                 trump_lv.append(self.data_dict['Trump result'][i])
 
-            
+            if len(harris_lv) == 0 or len(trump_lv) == 0:
+                return (0.0, 0.0)
 
+            avg_harris = sum(harris_lv) / len(harris_lv)
+            avg_trump = sum(trump_lv) / len(trump_lv)
+
+            return (avg_harris, avg_trump)
+            
 
     def polling_history_change(self):
         """
